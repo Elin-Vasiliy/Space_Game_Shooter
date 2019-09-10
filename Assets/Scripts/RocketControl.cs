@@ -4,21 +4,58 @@ using UnityEngine;
 
 public class RocketControl : MonoBehaviour
 {
-    private Bullet bullet;
+    [Header("Bullet")]
+    public GameObject bulletSet;
+    private bool isBullet = false;
+    private float SpeedBullet = 1f;
+
+    private float updateTime = 0f;
+
+
     private Vector2 firstPosition;
     private Vector2 finishPosition;
-    // Start is called before the first frame update
+    new private Rigidbody2D rigidbody;
+
     void Start()
     {
-        bullet = Resources.Load<Bullet>("Bullet");
-    }    
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (isBullet == true && updateTime < 0)
+        {
+            Shoot();
+            updateTime = 1f;
+        }
+        else
+        {
+            updateTime -= Time.deltaTime;
+        }
+    }
+
+    private void Awake()
+    {
+
+    }
+
+
 
     private void OnMouseDrag()
     {
+        isBullet = true;
         firstPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = firstPosition;
         RocketPosition();
+
     }
+
+    private void OnMouseUp()
+    {
+        isBullet = false;
+    }
+
+
 
     void RocketPosition()
     {
@@ -55,17 +92,16 @@ public class RocketControl : MonoBehaviour
             transform.position = new Vector2(transform.position.x, 4);
         }
 
-        Shoot();
+
     }
 
     private void Shoot()
     {
-        Vector2 position = transform.position;
-        position.y += 0.5f;
 
-        Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
+        Vector3 position = transform.position;
+        GameObject newBullet = Instantiate(bulletSet, position, Quaternion.identity) as GameObject;
 
-        newBullet.Parent = gameObject;
-        newBullet.Direction = newBullet.transform.up;
     }
+
+
 }
