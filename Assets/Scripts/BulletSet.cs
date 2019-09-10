@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class BulletSet : MonoBehaviour
 {
-    private SpriteRenderer sprite;
-
+    [SerializeField] private GameObject prefabBoom;
     private float Speed = 10f;
-    //private Vector3 direction;
-    //public Vector3 Direction { set { direction = value; } }
 
     private void Start()
     {
         Destroy(gameObject, 1.4f);
-    }
-
-    private void Awake()
-    {
-        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -25,5 +17,20 @@ public class BulletSet : MonoBehaviour
         transform.Translate(Vector3.up * Speed * Time.deltaTime, Space.World);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            Boom();
+        }
+        
+    }
+
+    private void Boom()
+    {
+        Destroy(Instantiate(prefabBoom, transform.position, Quaternion.identity), 1f);
+    }
 
 }
