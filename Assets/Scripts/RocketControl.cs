@@ -11,7 +11,7 @@ public class RocketControl : MonoBehaviour
 
     private float updateTime = 0f;
 
-
+    [SerializeField] GameObject prefabBoom;
     private Vector2 firstPosition;
     private Vector2 finishPosition;
     new private Rigidbody2D rigidbody;
@@ -103,5 +103,18 @@ public class RocketControl : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+            Explosion();
+        }
+    }
 
+    void Explosion()
+    {
+        Destroy(Instantiate(prefabBoom, transform.position, Quaternion.identity), 1f);
+    }
 }

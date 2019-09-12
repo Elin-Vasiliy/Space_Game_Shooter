@@ -91,21 +91,21 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.37, y: 1.83}
+    oldSize: {x: 0.685, y: 0.915}
     newSize: {x: 1.37, y: 1.83}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.37, y: 1.83}
+  m_Size: {x: 0.5, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &4659518985829144443
 MonoBehaviour:
@@ -121,3 +121,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSet: {fileID: 7934608469797394426, guid: d5d15adbfa30bca4a96ab9eb9860352b,
     type: 3}
+  prefabBoom: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
