@@ -10,15 +10,18 @@ public class RocketControl : MonoBehaviour
     private float SpeedBullet = 1f;
 
     private float updateTime = 0f;
+    GameState gameState = GameState.Play;
 
     [SerializeField] GameObject prefabBoom;
     private Vector2 firstPosition;
     private Vector2 finishPosition;
     new private Rigidbody2D rigidbody;
 
+
+
     void Start()
     {
-
+        gameState = GameState.Play;
     }
 
     private void FixedUpdate()
@@ -99,6 +102,7 @@ public class RocketControl : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
+            gameState = GameState.GameOver;
             Destroy(gameObject);
             Destroy(other.gameObject);
             Explosion();
@@ -109,4 +113,12 @@ public class RocketControl : MonoBehaviour
     {
         Destroy(Instantiate(prefabBoom, transform.position, Quaternion.identity), 1f);
     }
+
+    public enum GameState
+    {
+        Play,
+        GameOver,
+        Pause
+    }
+
 }
