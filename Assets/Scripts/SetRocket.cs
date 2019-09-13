@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class SetRocket : MonoBehaviour
 {
-    public GameObject Rocket;
-    // Start is called before the first frame update
+    [SerializeField] private GameObject Rocket;
+
     void Start()
     {
         SetUp();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void SetUp()

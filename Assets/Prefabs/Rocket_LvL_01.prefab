@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5161204598428272688}
   - component: {fileID: 8131529015978186541}
   - component: {fileID: 4659518985829144443}
+  - component: {fileID: 331819335530086517}
   m_Layer: 0
   m_Name: Rocket_LvL_01
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,3 +123,16 @@ MonoBehaviour:
   bulletSet: {fileID: 7934608469797394426, guid: d5d15adbfa30bca4a96ab9eb9860352b,
     type: 3}
   prefabBoom: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+--- !u!114 &331819335530086517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290049725850175239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6f5809e34bbbc419a7cb986cc1f1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabExplosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}

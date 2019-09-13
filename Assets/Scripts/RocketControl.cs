@@ -5,18 +5,18 @@ using UnityEngine;
 public class RocketControl : MonoBehaviour
 {
     [Header("Bullet")]
-    public GameObject bulletSet;
+    [SerializeField] private GameObject bulletSet;
     private bool isBullet = false;
     private float SpeedBullet = 1f;
 
     private float updateTime = 0f;
     GameState gameState = GameState.Play;
+    private int records = 0;
 
     [SerializeField] GameObject prefabBoom;
     private Vector2 firstPosition;
     private Vector2 finishPosition;
     new private Rigidbody2D rigidbody;
-
 
 
     void Start()
@@ -50,7 +50,6 @@ public class RocketControl : MonoBehaviour
     {
         isBullet = false;
     }
-
 
     void RocketPosition()
     {
@@ -92,26 +91,8 @@ public class RocketControl : MonoBehaviour
 
     private void Shoot()
     {
-
         Vector3 position = transform.position;
         GameObject newBullet = Instantiate(bulletSet, position, Quaternion.identity) as GameObject;
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "Enemy")
-        {
-            gameState = GameState.GameOver;
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-            Explosion();
-        }
-    }
-
-    void Explosion()
-    {
-        Destroy(Instantiate(prefabBoom, transform.position, Quaternion.identity), 1f);
     }
 
     public enum GameState
