@@ -6,14 +6,19 @@ using UnityEngine;
 
 public class BulletSet : MonoBehaviour
 {
-    private float speed = 10f;
+    private float speed = 1f;
 
     private void Start()
     {
-        Destroy(gameObject, 1.4f);
+        Destroy(gameObject, 5.4f);
     }
 
     private void Update()
+    {
+        MoveBullet();
+    }
+
+    void MoveBullet()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime, Space.World);
     }

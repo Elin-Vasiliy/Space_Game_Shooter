@@ -66,6 +66,8 @@
     <Compile Include="Assets\Scripts\Cont_Button.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Explosion.cs" />
+    <Compile Include="Assets\Scripts\GameControl.cs" />
+    <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\Points.cs" />
     <Compile Include="Assets\Scripts\RocketControl.cs" />
     <Compile Include="Assets\Scripts\SetEnemy.cs" />

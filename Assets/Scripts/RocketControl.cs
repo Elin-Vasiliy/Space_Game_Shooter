@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class RocketControl : MonoBehaviour
 {
     [Header("Bullet")]
@@ -10,18 +11,19 @@ public class RocketControl : MonoBehaviour
     private float SpeedBullet = 1f;
 
     private float updateTime = 0f;
-    GameState gameState = GameState.Play;
     private int records = 0;
+    GameControl gameControl;
+    GameState gameState;
 
     [SerializeField] GameObject prefabBoom;
     private Vector2 firstPosition;
     private Vector2 finishPosition;
     new private Rigidbody2D rigidbody;
 
-
-    void Start()
+    private void Start()
     {
-        gameState = GameState.Play;
+        gameControl = FindObjectOfType<GameControl>();
+
     }
 
     private void FixedUpdate()
@@ -41,7 +43,10 @@ public class RocketControl : MonoBehaviour
     {
         Vector3 pos = Input.mousePosition;
         pos.z = 2;
-        transform.position = Camera.main.ScreenToWorldPoint(pos);
+        if(gameControl.gameState == GameState.Play)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(pos);
+        }
         RocketPosition();
         if (Input.GetButtonDown("Fire1")) isBullet = true;
     }
@@ -95,11 +100,6 @@ public class RocketControl : MonoBehaviour
         GameObject newBullet = Instantiate(bulletSet, position, Quaternion.identity) as GameObject;
     }
 
-    public enum GameState
-    {
-        Play,
-        GameOver,
-        Pause
-    }
+    
 
 }
