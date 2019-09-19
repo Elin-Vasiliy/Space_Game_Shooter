@@ -6,7 +6,9 @@ public class SetRocket : MonoBehaviour
 {
     [SerializeField] private GameObject Rocket;
 
-    void Start()
+    
+
+    void Awake()
     {
         SetUp();
     }

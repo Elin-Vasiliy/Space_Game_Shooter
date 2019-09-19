@@ -8,12 +8,13 @@ public class RocketControl : MonoBehaviour
     [Header("Bullet")]
     [SerializeField] private GameObject bulletSet;
     private bool isBullet = false;
-    private float SpeedBullet = 1f;
+
+    GameOver gameOver;
 
     private float updateTime = 0f;
-    private int records = 0;
     GameControl gameControl;
     GameState gameState;
+    private bool isGameOver;
 
     [SerializeField] GameObject prefabBoom;
     private Vector2 firstPosition;
@@ -23,7 +24,8 @@ public class RocketControl : MonoBehaviour
     private void Start()
     {
         gameControl = FindObjectOfType<GameControl>();
-
+        gameOver = FindObjectOfType<GameOver>();
+        isGameOver = false;
     }
 
     private void FixedUpdate()
@@ -31,7 +33,7 @@ public class RocketControl : MonoBehaviour
         if (isBullet == true && updateTime < 0)
         {
             Shoot();
-            updateTime = 1f;
+            updateTime = 0.5f;
         }
         else
         {
@@ -100,6 +102,14 @@ public class RocketControl : MonoBehaviour
         GameObject newBullet = Instantiate(bulletSet, position, Quaternion.identity) as GameObject;
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            isGameOver = true;
+            gameOver.Over(isGameOver);
+        }
+    }
 
+    
 }

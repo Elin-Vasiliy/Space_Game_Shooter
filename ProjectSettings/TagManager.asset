@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Text
   - Pause
+  - Score
   layers:
   - Default
   - TransparentFX

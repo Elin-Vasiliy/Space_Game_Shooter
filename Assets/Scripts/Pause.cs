@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    public bool pauseBool = false;
     [SerializeField] private Sprite[] sprite;
-
+    public bool pauseBool = false;
+    
     private void Start()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite[0];
         pauseBool = false;
     }
 
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
         if(pauseBool == false)
         {

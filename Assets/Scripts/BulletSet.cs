@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BulletSet : MonoBehaviour
 {
-    private float speed = 1f;
+    private float speed = 5f;
 
     private void Start()
     {
