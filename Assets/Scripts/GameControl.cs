@@ -12,7 +12,7 @@ public enum GameState
 public class GameControl : MonoBehaviour
 {
     public GameState gameState;
-    Pause pause;
+    private Pause pause;
     private float timer;
 
     private void Start()
