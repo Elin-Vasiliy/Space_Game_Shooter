@@ -8,33 +8,22 @@ public class GameOver : MonoBehaviour
     [SerializeField] private Text txtGameOver;
     [SerializeField] private GameObject prefabBack;
     [SerializeField] private Text textScore;
-    private Points points;
-    private bool isGameOver;
+    public static bool isGameOver = false;
+    private bool isBack = false;
 
     private void Start()
     {
-        points = FindObjectOfType<Points>();
+        isGameOver = false;
     }
 
     private void Update()
     {
-        if (isGameOver == true && points.isNewRecord == false)
+        if (isGameOver == true && isBack == false)
         {
-            txtGameOver.text = $"Game Over" ;
-            textScore.text = $"Score \n{points.score}";
+            txtGameOver.text = $"Game Over \n{Score.score}";
             SetUp();
+            isBack = true;
         }
-        else if(isGameOver == true && points.isNewRecord == true)
-        {
-            txtGameOver.text = $"Game Over";
-            textScore.text = $"New Record \n{points.score}";
-            SetUp();
-        }
-    }
-
-    public void Over(bool isGame)
-    {
-        isGameOver = isGame;
     }
 
     private void SetUp()

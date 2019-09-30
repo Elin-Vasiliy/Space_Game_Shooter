@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class Record : MonoBehaviour
 {
     [SerializeField] private Text textRecord;
-    private Points points;
 
     void Start()
     {
-        points = GameObject.FindObjectOfType<Points>();
     }
 
     private void Update()

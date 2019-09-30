@@ -9,12 +9,9 @@ public class RocketControl : MonoBehaviour
     [SerializeField] private GameObject bulletSet;
     private bool isBullet = false;
 
-    GameOver gameOver;
-
     private float updateTime = 0f;
     GameControl gameControl;
     GameState gameState;
-    private bool isGameOver;
 
     [SerializeField] GameObject prefabBoom;
     private Vector2 firstPosition;
@@ -24,8 +21,6 @@ public class RocketControl : MonoBehaviour
     private void Start()
     {
         gameControl = FindObjectOfType<GameControl>();
-        gameOver = FindObjectOfType<GameOver>();
-        isGameOver = false;
     }
 
     private void FixedUpdate()
@@ -106,8 +101,7 @@ public class RocketControl : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            isGameOver = true;
-            gameOver.Over(isGameOver);
+            GameOver.isGameOver = true;
         }
     }
 

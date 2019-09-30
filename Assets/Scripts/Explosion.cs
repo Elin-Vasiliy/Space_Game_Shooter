@@ -6,24 +6,6 @@ public class Explosion : MonoBehaviour
 {
     [SerializeField] private GameObject prefabExplosion;
     GameState gameState;
-    private int scoreUp;
-    private Points points;
-    
-    void Start()
-    {
-        GameObject PointsObject = GameObject.FindGameObjectWithTag("Score");
-        if (PointsObject != null)
-        {
-            points = PointsObject.GetComponent<Points>();
-        }
-        else if (PointsObject == null)
-        {
-            Debug.Log("Ненайдено");
-        }
-
-        scoreUp = 0;
-
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,9 +14,11 @@ public class Explosion : MonoBehaviour
             Destroy(gameObject);
             Destroy(collision.gameObject);
             Boom();
-            
 
-            points.Score(scoreUp);
+            if(GameOver.isGameOver == false)
+            {
+                Score.score += 1;
+            }
         }
         else if(collision.gameObject.tag == "Enemy" && gameObject.tag != "Enemy")
         {
@@ -46,7 +30,6 @@ public class Explosion : MonoBehaviour
 
     private void Boom()
     {
-        scoreUp += 10;
         Destroy(Instantiate(prefabExplosion, transform.position, Quaternion.identity), 1f);
     }
 }
